@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>まったーりアプ!</title>
+      <%= csrf_meta_tags %>
+      <%= csp_meta_tag %>
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+  <body>
+    <br>
+    <h1 class="text-center display-1 aply-title">まったーりアプ!</h1>
+    <% if session[:user_id] %>
+     <ul class="link_top container">
+       <li class="my-name"><%=  "ようこそ #{@current_user.name}さん" %></li>
+       <li><%= link_to "自分の情報を確認する",user_path(@current_user) %></li>
+       <li><%= link_to "ホーム",home_path %></li>
+       <li><%= link_to "このアプリについて",about_path %></li>
+       <li><%= link_to "ユーザー一覧",users_path %></li>
+       <li><%= link_to "掲示板投稿一覧",posts_path %></li>
+       <li><%= link_to "掲示板に投稿する",new_post_path %></li>
+       <li><%= link_to "好きな本一覧を見る",books_path %></li>
+       <li><%= link_to "好きな本を投稿する",new_book_path %></li>
+       <li><%= link_to "ログアウト",logout_path,method: :post,data: {confirm: "ログアウトしますか?"} %></li>
+    <% else %>
+       <li class="ml-5 mb-1"><%= link_to "新規登録",new_user_path %></li>
+       <li class="ml-5"><%= link_to "ログイン",login_path %></li>
+     </ul>
+    <% end %>
+
+  <% if flash[:notice] %>
+    <h1 class="text-danger text-center display-3"><%= flash[:notice] %></h1>
+  <% end %>
+
+  <div class="text-center">
+    <%= yield %>
+  </div>
+  <br>
+<p class="text-center">Copyright © まったーりアプ!</p>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+@import "bootstrap";
+*{
+  list-style: none;
+}
+.link_top li{
+  font-size: 20px;
+}
+
+.aply-title{
+  color:gold;
+}
+
+.recommend-text{
+  color:green;
+}
+
+body{
+  font-size:20px;
+  background-color:mintcream;
+}
+.post-comment {
+  font-size: 25px;
+}
+
+.like-btn {
+  color: blue;
+}
+
+.like-btn-unlike {
+  color: red;
+}
+
+.my-name {
+  color:red;
+  font-weight: bold;
+}

@@ -1,0 +1,45 @@
+<h1 class="display-4">投稿詳細</h1>
+<br>
+<h3>タイトル：<%= @post.title %></h3>
+<h3>内容：<%= @post.content %></h3>
+<% if @post.user %> <%# もし投稿したユーザーがいたらユーザーネームを表示 %>
+<h3>投稿者：<%= @post.user.name %>さん</h3>
+<% end %>
+<h3>いいねされた数！→<% if Like.find_by(user_id: @current_user.id, post_id: @post.id) %>
+        <%= link_to("/likes/#{@post.id}/destroy", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn-unlike"></span>
+        <% end %>
+      <% else %>
+        <%= link_to("/likes/#{@post.id}/create", {method: "post"}) do %>
+          <span class="fa fa-heart like-btn"></span>
+        <% end %>
+      <% end %>
+      <%= @likes_count %></h3>
+<br>
+
+<% if @post.user_id == @current_user.id %>
+  <%= link_to "編集する", edit_post_path(@post),class:"mr-1" %>
+  <%= link_to "削除する", post_path(@post),method: :delete %>
+<% end %>
+
+<br>
+<br>
+<h3>コメント一覧</h3>
+
+ <% if @post.comments.empty? %>
+ <br>
+ <h3>まだコメントはありません</h3>
+ <br>
+ <% end %>
+
+ <% @post.comments.each do |comment| %>
+  <ul>
+    <li ><span class="post-comment">コメント内容：<%= comment.body %></span>
+      <%= link_to "編集する", edit_post_comment_path(@post,comment),method: :get,class:"mx-3" %><%= link_to "削除する", post_comment_path(@post,comment),method: :delete,data: {confirm: "削除しますか?"} %></li>
+  </ul>
+ <% end %>
+<br>
+<%= form_for ([@post,@post.comments.build]) do |f| %>
+ <h1>コメントする：<%= f.text_field :body %></h1>
+<%= f.submit :"投稿",class:"btn btn-info form-control w-25 " %>
+<% end %>

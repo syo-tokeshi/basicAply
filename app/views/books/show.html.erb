@@ -1,0 +1,18 @@
+<h1 class="text-danger">本の詳細</h1>
+<h2 class="display-4 text-warning">タイトル：<%= @book.title %></h2>
+<h2 class="display-4 text-warning">カテゴリー：<%= @book.category %></h2>
+<h2 class="display-4 text-warning">コメント：<%= @book.comment %></h2>
+<h2 class="display-4 text-warning">値段：<%= @book.price %>円</h2>
+<% if @book.user %>
+<h2 class="display-4 text-warning">この本を紹介してくれた方は<%= @book.user.name %>さんです！</h2>
+<% end %>
+<br>
+<h2 class="text-danger">この本に対する管理人による推薦文↓recommend!</h2>
+<br>
+<h2 class="display-3 recommend-text"><%=   @books_reviews.shuffle[0] %></h2>
+<br>
+
+<% if @book.user_id == @current_user.id %>
+  <%= link_to "編集する", edit_book_path(@book),class:"mr-1" %>
+  <%= link_to "削除する", book_path(@book),method: :delete %>
+<% end %>
