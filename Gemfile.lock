@@ -72,6 +72,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    chartkick (3.3.1)
     childprocess (3.0.0)
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
@@ -254,6 +255,8 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    groupdate (5.0.0)
+      activesupport (>= 5)
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -425,11 +428,13 @@ DEPENDENCIES
   byebug
   capybara (>= 2.15)
   carrierwave
+  chartkick
   chromedriver-helper
   cloudinary
   coffee-rails (~> 4.2)
   fog (= 1.42)
   fog-aws
+  groupdate
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)
   kaminari

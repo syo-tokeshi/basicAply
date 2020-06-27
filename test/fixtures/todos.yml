@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  today: MyText
+  tommorow: MyText
+  week: MyText
+  check: false
+  user_id: 1
+
+two:
+  date: MyString
+  today: MyText
+  tommorow: MyText
+  week: MyText
+  check: false
+  user_id: 1

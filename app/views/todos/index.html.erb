@@ -1,0 +1,4 @@
+<% @todos.each do |todo| %>
+    <td><%= link_to "#{todo.id}人目",todo_path(todo) %></td>
+    <td><%= link_to "#{todo.today}人目",todo_path(todo) %></td>
+<% end %>
